@@ -7,13 +7,18 @@ Les cases reflètent les éléments implémentés dans la branche. Le succès CI
 - [x] Choisir une architecture statique sans dépendances externes.
 - [x] Définir la structure, les scripts npm, les règles agent et la sécurité.
 - [x] Ajouter des contrôles de contenu et des tests natifs.
-- [ ] Confirmer les résultats CI sur GitHub.
+- [x] Confirmer les résultats CI sur GitHub (tests 15/15, check, build OK — commit sur main).
+- [ ] Déployer sur GitHub Pages et vérifier le rendu public après push.
 
 ## 2. Prototype de présentation
 - [x] Page d'accueil originale et responsive.
 - [x] Services, parcours patient, formulaire de démo et informations pratiques.
 - [x] Navigation mobile et sélection de service préremplie.
 - [x] Mention non officielle et protections anti-indexation.
+- [x] Variables CSS corrigées (--paper, --lime, --mint définies dans :root).
+- [x] Système de design (tokens typographie, espacement, rayons, ombres).
+- [x] États bouton et formulaire (hover, focus, active, disabled, invalide).
+- [x] Tests CSS variables et comportement navigation ajoutés (15 tests au total).
 - [ ] Revue visuelle manuelle sur plusieurs navigateurs/appareils.
 - [ ] Audit d'accessibilité automatisé complet.
 
