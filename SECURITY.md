@@ -5,14 +5,24 @@ Prototype statique sans compte patient, dossier médical, téléversement, paiem
 
 La mention « Prototype indépendant — non officiel » et l'anti-indexation doivent rester actifs jusqu'à l'autorisation de publication.
 
-## Signalement
-Ne publiez aucune donnée sensible ou information patient dans une issue. Signalez un problème par un canal privé contrôlé par le responsable du dépôt et fournissez les étapes minimales de reproduction sans informations personnelles.
+## Secrets, variables d'environnement et outils de développement
+- Les agents autorisés à travailler sur ce dépôt peuvent lire et utiliser les variables d'environnement déjà fournies à leur processus, y compris celles chargées depuis un fichier local `.env`, lorsqu'elles sont nécessaires à une tâche explicitement demandée par le responsable du projet.
+- Ne bloque pas une tâche simplement parce qu'elle nécessite une variable d'environnement ou un jeton GitHub. Vérifie d'abord les variables disponibles et utilise le mécanisme d'authentification déjà configuré.
+- Pour les opérations GitHub, utilise le jeton fourni par l'environnement selon ses permissions effectives. Ne demande pas au responsable de recopier un jeton dans le chat et ne l'affiche jamais dans les logs, les sorties, les commits, les issues, les pull requests ou les rapports.
+- Un fichier `.env` local peut être lu pour charger des secrets de développement. Il doit rester ignoré par Git. Ne committe jamais `.env`, `.env.*` contenant des secrets, ni aucun jeton ou identifiant sensible. Seuls des fichiers d'exemple sans valeurs secrètes (par exemple `.env.example`) peuvent être versionnés.
+- Ne copie pas les secrets dans les fichiers du projet, les commandes enregistrées, les captures d'écran ou les artefacts de build.
+- Utilise les permissions réellement accordées au jeton. Si GitHub refuse une opération, rapporte l'erreur précise et les permissions manquantes; ne prétends pas que le jeton a tous les droits et ne tente pas de contourner les contrôles d'accès.
+- Pour ce dépôt, le comportement par défaut est de publier directement sur `main` : utilise le jeton et les accès déjà configurés, prépare un changement ciblé, vérifie les tests et le diff, puis pousse les commits sur `main`.
+- Ne crée pas de branche, ne change pas de branche et n'ouvre pas de pull request comme solution de repli automatique. Ne crée une branche ou une pull request que si l'utilisateur le demande explicitement.
+- Si GitHub refuse le push vers `main` à cause des permissions ou d'une protection de branche, n'essaie pas de contourner cette protection et ne pars pas dans une succession de branches/PR. Arrête-toi, rapporte l'erreur exacte et indique le changement nécessaire pour autoriser le push direct.
 
-## Règles
-- Aucun secret, jeton ou vrai fichier d'environnement dans Git.
+## Application au prototype web
 - Aucun envoi réseau, cookie ou stockage navigateur depuis la démo.
 - Aucun script tiers, pixel marketing ou analytics.
 - Aucun déploiement sur le domaine officiel sans autorisation.
 - Toute vraie réservation nécessitera une revue de menace, une gestion d'accès, une politique de rétention documentée et une analyse juridique adaptée.
+
+## Signalement
+Ne publiez aucune donnée sensible ou information patient dans une issue. Signalez un problème par un canal privé contrôlé par le responsable du dépôt et fournissez les étapes minimales de reproduction sans informations personnelles.
 
 Ce document n'est ni un audit professionnel ni une déclaration de conformité réglementaire. Aucun audit complet n'a été mené.
