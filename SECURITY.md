@@ -12,7 +12,7 @@ La mention « Prototype indépendant — non officiel » et l'anti-indexation do
 - Un fichier `.env` local peut être lu pour charger des secrets de développement. Il doit rester ignoré par Git. Ne committe jamais `.env`, `.env.*` contenant des secrets, ni aucun jeton ou identifiant sensible. Seuls des fichiers d'exemple sans valeurs secrètes (par exemple `.env.example`) peuvent être versionnés.
 - Ne copie pas les secrets dans les fichiers du projet, les commandes enregistrées, les captures d'écran ou les artefacts de build.
 - Utilise les permissions réellement accordées au jeton. Si GitHub refuse une opération, rapporte l'erreur précise et les permissions manquantes; ne prétends pas que le jeton a tous les droits et ne tente pas de contourner les contrôles d'accès.
-- L'autorisation d'utiliser un jeton ne change pas les limites de la tâche : respecte les instructions du responsable, la branche de travail, les règles de revue et l'interdiction de publier directement dans `main` lorsqu'elle s'applique.
+- Respecte la méthode de livraison explicitement demandée. Si l'utilisateur demande un push sur `main`, tente le push direct uniquement si les permissions effectives et les règles du dépôt l'autorisent. Ne contourne jamais une protection de branche. Si le push direct est refusé ou si la protection exige une revue, crée automatiquement une branche de travail, pousse-la et ouvre une pull request vers `main` au lieu d'abandonner.
 
 ## Application au prototype web
 - Aucun envoi réseau, cookie ou stockage navigateur depuis la démo.
