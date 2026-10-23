@@ -1,8 +1,8 @@
-const allowedServices = new Set([
+export const allowedServices = new Set([
   "cardiologie", "gynecologie", "endocrinologie", "gastro-enterologie",
   "neurologie", "ophtalmologie", "traumatologie", "urologie"
 ]);
-const allowedPeriods = new Set(["matin", "apres-midi", "indifferent"]);
+export const allowedPeriods = new Set(["matin", "apres-midi", "indifferent"]);
 const serviceLabels = {
   cardiologie: "Cardiologie",
   gynecologie: "Gynécologie",
