@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - "feat/**"
+      - "chore/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Tests, content checks and static build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22.16.0"
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Unit tests
+        run: npm test
+      - name: Static site checks
+        run: npm run check
+      - name: Production build
+        run: npm run build
+      - name: Confirm output exists
+        run: test -s dist/index.html && test -s dist/styles.css && test -s dist/robots.txt

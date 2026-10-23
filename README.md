@@ -1,37 +1,62 @@
-# Prototype de site web — Clinique à Conakry
+# International Clinic Conakry — proposition de refonte
 
-> **Prototype indépendant de démonstration commerciale.** Ce dépôt vise à présenter une proposition de refonte à une clinique de Conakry. Ce n'est pas le site officiel d'un établissement et aucun partenariat n'est confirmé.
+> **Prototype indépendant — non officiel.** Cette démonstration n'est ni le site officiel de la clinique ni une confirmation de partenariat. Les coordonnées, horaires et services doivent être validés par un représentant autorisé avant toute diffusion publique.
 
-## Objectif
-Créer une expérience moderne, mobile-first et crédible pour consulter les services, trouver des informations pratiques, contacter la clinique et découvrir un parcours de rendez-vous.
+Proposition de site institutionnel en français, conçue pour rendre l'information plus lisible, faciliter l'orientation et présenter un parcours de demande de rendez-vous sans transmettre ni conserver de données.
 
-Le prototype doit s'inspirer des besoins fonctionnels, sans copier le code, les textes, le logo ou les photographies du site de référence. Utiliser une identité visuelle provisoire et des données fictives clairement signalées.
+## Stack retenu
 
-## Périmètre MVP
-- Accueil et navigation claire
-- Catalogue de spécialités et fiches de démonstration
-- Informations pratiques et contact
-- Parcours de rendez-vous simulé
-- Interface responsive et accessible
+HTML5 sémantique, CSS natif et JavaScript en modules. Node.js 22 et npm servent au développement, aux tests et au build. Aucune dépendance applicative externe : installation reproductible, surface de maintenance réduite et hébergement statique à faible coût. Justification : [docs/TECH_STACK.md](docs/TECH_STACK.md).
 
-Aucune donnée réelle de patient, aucun dossier médical, aucun paiement et aucune réservation réelle dans le prototype. Toute confirmation de rendez-vous doit préciser qu'il s'agit d'une simulation.
+## Démarrage
 
-## Documentation
-- [Brief produit](docs/PROJECT_BRIEF.md)
-- [Roadmap](ROADMAP.md)
-- [Consignes développeurs et agents](AGENTS.md)
-- [Contribution](CONTRIBUTING.md)
-- [Sécurité et confidentialité](SECURITY.md)
+Prérequis : Node.js **22.12+** et npm.
 
-## État
-Dépôt au stade du cadrage. La stack sera choisie après inspection des besoins. Lire AGENTS.md avant toute modification et documenter les commandes de démarrage une fois la stack confirmée.
+```bash
+npm ci
+npm run dev
+```
 
-## Principes
-1. Ne pas inventer médecins, qualifications, horaires, tarifs, coordonnées, certifications ou services.
-2. Signaler visiblement que le site est un prototype indépendant non officiel.
-3. N'utiliser aucune donnée personnelle ou médicale réelle.
-4. Tester les parcours, liens, états d'erreur et affichage mobile.
-5. Utiliser des textes et visuels originaux ou dûment autorisés.
+Ouvrir http://127.0.0.1:4173.
 
-## Licence
-Aucune licence de réutilisation n'a été choisie. Ne pas présumer que le contenu est librement réutilisable.
+## Vérifications
+
+```bash
+npm test
+npm run check
+npm run build
+npm run preview
+```
+
+Le build génère `dist/`. Le serveur local n'expose qu'une liste explicite de fichiers publics ; la documentation, les scripts internes et les fichiers Git ne sont pas servis.
+
+## Fonctionnalités
+
+- Page d'accueil responsive, navigation mobile et liens de section.
+- Liste de spécialités relevées sur la page de référence et clairement signalées comme contenu à confirmer.
+- Parcours patient, informations pratiques et pied de page.
+- Formulaire local : spécialité, date et période indicative uniquement ; confirmation simulée.
+- Aucune donnée personnelle demandée, aucune transmission, aucun stockage navigateur.
+- HTML sémantique, lien d'évitement, labels, focus visible, message d'état accessible et réduction des animations.
+- Métadonnées `noindex` et `robots.txt` bloquant l'exploration pendant la présentation.
+
+## Structure
+
+```text
+.
+├── .github/workflows/ci.yml
+├── docs/                 # brief, stack, fonctionnalités, pitch, contenu
+├── scripts/              # serveur local, contrôles, build
+├── src/                  # interactions et logique de démo
+├── test/                 # tests Node natifs
+├── index.html
+├── styles.css
+├── package.json
+└── package-lock.json
+```
+
+## Limites
+
+Le formulaire n'enregistre aucun rendez-vous réel. Les spécialités doivent être confirmées. Les coordonnées téléphoniques relevées dans des sources publiques sont contradictoires ; aucun numéro n'est donc affiché comme fiable. Aucun logo, portrait ou photographie de la clinique n'est reproduit. Un audit sécurité, juridique, accessibilité et validation éditoriale reste nécessaire avant publication.
+
+Lire [ROADMAP.md](ROADMAP.md), [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md) et la documentation dans `docs/`.

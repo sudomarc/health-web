@@ -1,0 +1,38 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+
+const html = await readFile("index.html", "utf8");
+const clientCode = await readFile("src/main.js", "utf8") +
+  "\n" + await readFile("src/appointment-demo.mjs", "utf8");
+const css = await readFile("styles.css", "utf8");
+const robots = await readFile("robots.txt", "utf8");
+
+assert.match(html, /<html lang="fr">/, "La langue principale doit être déclarée.");
+assert.match(html, /name="robots" content="noindex, nofollow, noarchive, nosnippet"/, "Le prototype doit rester hors index.");
+assert.match(html, /Prototype indépendant — non officiel/, "La mention de prototype doit rester visible.");
+assert.match(robots, /User-agent:\s*\*\s*Disallow:\s*\//, "robots.txt doit interdire l'exploration.");
+assert.match(html, /<main id="contenu">/, "Un élément main doit être présent.");
+assert.match(html, /class="skip-link" href="#contenu"/, "Le lien d'évitement clavier est requis.");
+assert.match(html, /aria-label="Navigation principale"/, "La navigation doit être nommée.");
+assert.match(html, /aria-expanded="false" aria-controls="navigation-principale"/, "Le menu doit exposer son état.");
+assert.match(html, /<form class="request-form" id="demo-form">/, "Le formulaire de démonstration doit exister.");
+assert.match(html, /name="preferredDate"/, "Le formulaire doit proposer une date.");
+assert.match(html, /id="form-status" role="status" aria-live="polite"/, "Le retour du formulaire doit être annoncé.");
+assert.match(html, /Aucune demande n'a été envoyée ni enregistrée/, "La simulation doit être explicitement signalée.");
+assert.match(css, /prefers-reduced-motion:\s*reduce/, "La préférence de mouvement réduit doit être respectée.");
+assert.match(css, /:focus-visible/, "Les états de focus doivent être visibles.");
+assert.doesNotMatch(clientCode, /\bfetch\s*\(|\bXMLHttpRequest\b|localStorage|sessionStorage|sendBeacon|document\.cookie/, "La démo ne doit pas transmettre ou persister les données.");
+
+const ids = new Set(Array.from(html.matchAll(/\sid="([^"]+)"/g), (match) => match[1]));
+for (const match of html.matchAll(/href="#([^"]+)"/g)) {
+  assert.ok(ids.has(match[1]), "Ancre interne sans cible : #" + match[1]);
+}
+
+const labelTargets = new Set(Array.from(html.matchAll(/<label[^>]+for="([^"]+)"/g), (match) => match[1]));
+for (const fieldId of ["service", "preferred-date", "period"]) {
+  assert.ok(ids.has(fieldId), "Champ manquant : " + fieldId);
+  assert.ok(labelTargets.has(fieldId), "Champ sans libellé explicite : " + fieldId);
+}
+
+assert.match(html, /<meta name="description"/, "La description est manquante.");
+console.log("Contrôle statique réussi : métadonnées, ancres, formulaire local, sécurité de base et focus.");
