@@ -37,11 +37,11 @@
 
 ## Publication des changements — obligatoire
 
-- Une tâche qui modifie le dépôt n'est pas terminée tant que les changements demandés n'ont pas été publiés sur GitHub, sauf si l'utilisateur demande explicitement de ne pas publier.
-- Suis d'abord la méthode explicitement demandée. Si l'utilisateur demande un push sur `main`, pousse directement sur `main` lorsque les permissions et les règles du dépôt l'autorisent. Ne contourne jamais les protections de branche.
-- Si le push direct échoue ou si une protection impose une revue, bascule automatiquement vers une branche dédiée : crée ou réutilise une branche appropriée, pousse les commits, puis ouvre une pull request vers `main`. Ne t'arrête pas après avoir seulement créé un commit ou une branche.
-- Si l'utilisateur demande une pull request, crée-la explicitement après avoir poussé la branche et vérifie que son URL existe. Ne considère pas un PR fermé comme ouvert : vérifie son état et, s'il est fermé, s'il a été fusionné.
-- Avant d'annoncer la réussite, vérifie sur GitHub le commit distant, la branche cible ou l'URL et l'état de la pull request. En cas d'échec d'authentification, de permission ou de protection, indique l'erreur réelle et le point bloquant; ne prétends jamais avoir publié des changements qui ne sont pas visibles sur GitHub.
+- Pour ce dépôt, le comportement par défaut est de pousser les changements directement sur `main`. Une tâche n'est pas terminée tant que les commits demandés ne sont pas effectivement présents sur `origin/main`, sauf si l'utilisateur demande explicitement de ne pas publier.
+- Utilise les identifiants et le jeton GitHub déjà configurés. Inspecte l'état du dépôt, récupère les changements récents, évite d'écraser le travail d'autrui, effectue les vérifications pertinentes, relis le diff et pousse directement sur `main`.
+- **Ne crée pas de branche et n'ouvre pas de pull request par défaut.** Ne bascule pas entre des branches et ne crée pas de branches successives pour contourner un push refusé. Crée une branche ou une PR uniquement si l'utilisateur le demande explicitement.
+- Si le push sur `main` est refusé par une erreur d'authentification, de permission, de protection ou de conflit, ne prétends pas que le travail est publié. N'essaie pas de contourner les protections GitHub. Rapporte l'erreur exacte, ce qui a été commité localement ou à distance, et l'action précise nécessaire pour débloquer le push direct.
+- Avant d'annoncer la réussite, vérifie sur GitHub que le commit est bien sur `main` et que son SHA correspond au résultat attendu. Un commit local, une branche distante ou une PR ne vaut pas publication sur `main`.
 
 ## Workflow
 1. Lire README et les règles pertinentes avant de modifier.
