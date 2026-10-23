@@ -1,11 +1,33 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
+import { resolve } from "node:path";
 
 const html = await readFile("index.html", "utf8");
 const clientCode = await readFile("src/main.js", "utf8") +
   "\n" + await readFile("src/appointment-demo.mjs", "utf8");
 const css = await readFile("styles.css", "utf8");
 const robots = await readFile("robots.txt", "utf8");
+const root = process.cwd();
+
+// Ressources publiques déclarées par le build : toutes doivent exister sur le disque.
+const publicFiles = [
+  "index.html",
+  "styles.css",
+  "robots.txt",
+  "src/main.js",
+  "src/appointment-demo.mjs"
+];
+for (const relativePath of publicFiles) {
+  await stat(resolve(root, relativePath));
+}
+
+// Aucune ressource locale ne doit être référencée par un chemin absolu racine
+// (ex: /styles.css, /src/main.js). Sur un site GitHub Pages de projet servi
+// sous /health-web/, de tels chemins visent la racine du domaine et renvoient 404.
+for (const match of html.matchAll(/(?:href|src)="\/([^"]+)"/g)) {
+  assert.fail("Référence absolue racine détectée : /" + match[1] +
+    " (incompatible avec le sous-chemin GitHub Pages ; utiliser un chemin relatif)");
+}
 
 assert.match(html, /<html lang="fr">/, "La langue principale doit être déclarée.");
 assert.match(html, /name="robots" content="noindex, nofollow, noarchive, nosnippet"/, "Le prototype doit rester hors index.");
