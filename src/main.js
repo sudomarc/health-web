@@ -23,23 +23,26 @@ if (dateInput) {
 }
 
 if (menuToggle && navigation) {
+  function setMenuOpen(open) {
+    menuToggle.setAttribute("aria-expanded", String(open));
+    navigation.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+
   menuToggle.addEventListener("click", () => {
     const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-    navigation.classList.toggle("is-open", !isExpanded);
+    setMenuOpen(!isExpanded);
   });
 
   navigation.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      menuToggle.setAttribute("aria-expanded", "false");
-      navigation.classList.remove("is-open");
+      setMenuOpen(false);
     });
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      menuToggle.setAttribute("aria-expanded", "false");
-      navigation.classList.remove("is-open");
+      setMenuOpen(false);
     }
   });
 }
