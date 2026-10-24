@@ -72,6 +72,36 @@ test("aucune variable CSS utilisée n'est indéfinie", () => {
   }
 });
 
+// Tests d'accessibilité et de structure HTML
+test("la langue française est déclarée sur l'élément html", () => {
+  assert.ok(/<html lang="fr">/.test(html), "La langue principale doit être fr.");
+});
+
+test("le lien d'évitement clavier est présent et pointe vers #contenu", () => {
+  assert.ok(/class="skip-link" href="#contenu"/.test(html), "Le lien d'évitement est requis.");
+  assert.ok(/<main id="contenu">/.test(html), "L'élément main avec id contenu est requis.");
+});
+
+test("la mention prototype est visible et les métadonnées anti-indexation sont présentes", () => {
+  assert.ok(/Prototype indépendant — non officiel/.test(html), "La mention prototype doit rester visible.");
+  assert.ok(/name="robots" content="noindex, nofollow, noarchive, nosnippet"/.test(html), "Le prototype doit rester hors index.");
+});
+
+test("toutes les ancres internes pointent vers une cible existante", () => {
+  const ids = new Set(Array.from(html.matchAll(/id="([^"]+)"/g), (match) => match[1]));
+  for (const match of html.matchAll(/href="#([^"]+)"/g)) {
+    assert.ok(ids.has(match[1]), "Ancre interne sans cible : #" + match[1]);
+  }
+});
+
+test("le menu expose son état d'ouverture via aria-expanded et aria-controls", () => {
+  assert.ok(/aria-expanded="false" aria-controls="navigation-principale"/.test(html), "Le menu doit exposer son état.");
+});
+
+test("le formulaire expose un retour annoncé aux technologies d'assistance", () => {
+  assert.ok(/id="form-status" role="status" aria-live="polite"/.test(html), "Le statut du formulaire doit être annoncé.");
+});
+
 // Test du comportement de navigation (menu mobile, touche Échap)
 test("le menu toggle bascule aria-expanded et la classe is-open", () => {
   const opened = [];

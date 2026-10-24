@@ -52,3 +52,44 @@ test("does not mutate supplied preferences", () => {
   createDemoAppointment(input, today);
   assert.deepEqual(input, snapshot);
 });
+
+test("rejects today's date (must be strictly in the future)", () => {
+  const todayStr = "2026-10-23";
+  assert.throws(
+    () => createDemoAppointment({ service: "cardiologie", preferredDate: todayStr, period: "matin" }, today),
+    /date à venir/
+  );
+});
+
+test("accepts a date several months ahead", () => {
+  const result = createDemoAppointment(
+    { service: "neurologie", preferredDate: "2027-03-15", period: "apres-midi" },
+    today
+  );
+  assert.equal(result.service, "Neurologie");
+  assert.equal(result.period, "l'après-midi");
+});
+
+test("rejects an empty service value", () => {
+  assert.throws(
+    () => createDemoAppointment({ service: "", preferredDate: tomorrow, period: "matin" }, today),
+    /spécialité/
+  );
+});
+
+test("rejects an empty period value", () => {
+  assert.throws(
+    () => createDemoAppointment({ service: "cardiologie", preferredDate: tomorrow, period: "" }, today),
+    /période indicative/
+  );
+});
+
+test("returns a message stating no request is sent or recorded", () => {
+  const result = createDemoAppointment(
+    { service: "urologie", preferredDate: tomorrow, period: "indifferent" },
+    today
+  );
+  assert.match(result.message, /Aucune demande n'a été envoyée ni enregistrée/);
+  assert.ok(!/rendez-vous confirmé/.test(result.message), "Le message ne doit pas confirmer un rendez-vous.");
+  assert.ok(!/réservé/.test(result.message), "Le message ne doit pas indiquer une réservation.");
+});

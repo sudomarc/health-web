@@ -41,7 +41,7 @@ export function createDemoAppointment(input, now = new Date()) {
   if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== preferredDate) {
     throw new TypeError("La date indiquée n'est pas valide.");
   }
-  if (preferredDate < localDateString(now)) {
+  if (preferredDate <= localDateString(now)) {
     throw new TypeError("Choisissez une date à venir.");
   }
   if (!allowedPeriods.has(period)) {

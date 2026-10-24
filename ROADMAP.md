@@ -7,7 +7,8 @@ Les cases reflètent les éléments implémentés dans la branche. Le succès CI
 - [x] Choisir une architecture statique sans dépendances externes.
 - [x] Définir la structure, les scripts npm, les règles agent et la sécurité.
 - [x] Ajouter des contrôles de contenu et des tests natifs.
-- [x] Confirmer les résultats CI sur GitHub (tests 15/15, check, build OK — commit sur main).
+- [x] Confirmer les résultats CI sur GitHub (tests 21/21, check, build OK — commit sur main).
+- [x] Corriger la référence invalide à steps.deployment.outputs.page_url dans deploy-pages.yml (job build).
 - [ ] Déployer sur GitHub Pages et vérifier le rendu public après push.
 
 ## 2. Prototype de présentation
@@ -18,7 +19,8 @@ Les cases reflètent les éléments implémentés dans la branche. Le succès CI
 - [x] Variables CSS corrigées (--paper, --lime, --mint définies dans :root).
 - [x] Système de design (tokens typographie, espacement, rayons, ombres).
 - [x] États bouton et formulaire (hover, focus, active, disabled, invalide).
-- [x] Tests CSS variables et comportement navigation ajoutés (15 tests au total).
+- [x] Tests CSS variables, comportement navigation et accessibilité ajoutés (21 tests au total).
+- [x] Tests fonctionnels supplémentaires (date du jour rejetée, date lointaine acceptée, champs vides rejetés, message sans réservation).
 - [ ] Revue visuelle manuelle sur plusieurs navigateurs/appareils.
 - [ ] Audit d'accessibilité automatisé complet.
 
