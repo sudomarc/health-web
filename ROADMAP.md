@@ -7,8 +7,9 @@ Les cases reflètent les éléments implémentés dans la branche. Le succès CI
 - [x] Choisir une architecture statique sans dépendances externes.
 - [x] Définir la structure, les scripts npm, les règles agent et la sécurité.
 - [x] Ajouter des contrôles de contenu et des tests natifs.
-- [x] Confirmer les résultats CI sur GitHub (tests 21/21, check, build OK — commit sur main).
-- [x] Corriger la référence invalide à steps.deployment.outputs.page_url dans deploy-pages.yml (job build).
+- [x] Confirmer les résultats CI sur GitHub (tests 49/49, check OK — commit sur main).
+- [ ] Build bloqué par une anomalie préexistante dans scripts/build.mjs (RegExp non globale dans scanForSecrets, ligne 42) : à corriger avant tout déploiement.
+- [ ] Corriger la référence invalide à steps.deployment.outputs.page_url dans deploy-pages.yml (job build).
 - [ ] Déployer sur GitHub Pages et vérifier le rendu public après push.
 
 ## 2. Prototype de présentation
@@ -19,8 +20,9 @@ Les cases reflètent les éléments implémentés dans la branche. Le succès CI
 - [x] Variables CSS corrigées (--paper, --lime, --mint définies dans :root).
 - [x] Système de design (tokens typographie, espacement, rayons, ombres).
 - [x] États bouton et formulaire (hover, focus, active, disabled, invalide).
-- [x] Tests CSS variables, comportement navigation et accessibilité ajoutés (21 tests au total).
+- [x] Tests CSS variables, comportement navigation et accessibilité ajoutés (49 tests au total après le renforcement des tests de contenu).
 - [x] Tests fonctionnels supplémentaires (date du jour rejetée, date lointaine acceptée, champs vides rejetés, message sans réservation).
+- [x] Tests de contenu renforcés : ISO 9001 jamais présentée comme acquise, aucun contact/horaire inventé, bandeau prototype et noindex conservés, toutes les images déclarées illustrations (49 tests au total).
 - [ ] Revue visuelle manuelle sur plusieurs navigateurs/appareils.
 - [ ] Audit d'accessibilité automatisé complet.
 

@@ -21,10 +21,10 @@ export const PLACEHOLDERS = {
 };
 
 export const clinicInfo = {
-  name: "International Clinic",
-  city: "Conakry",
+  name: { value: "International Clinic", status: "documented", note: "Dénomination usuelle relevée sur la source publique ; dénomination officielle à confirmer par la clinique." },
+  city: { value: "Conakry", status: "documented", note: "Ville relevée sur la source publique ; à confirmer par la clinique." },
   legalName: { value: null, status: "placeholder", label: "[DÉNOMINATION LÉGALE À VALIDER]" },
-  tagline: { value: "Vous soigner est notre occupation, vous soigner efficacement reste notre préoccupation.", status: "documented" },
+  tagline: { value: "Vous soigner est notre occupation, vous soigner efficacement reste notre préoccupation.", status: "documented", note: "Slogan publié sur la source publique : affirmation marketing, pas un engagement vérifié. À confirmer avant affichage officiel." },
 
   address: {
     value: "Camayenne, commune de Dixinn, Conakry, Guinée",
@@ -86,10 +86,11 @@ export const clinicInfo = {
 
 /**
  * Spécialités relevées sur la page source (menu « Spécialité » et grille d'icônes).
- * `sourceText` : description publiée sur la source, corrigée des fautes évidentes.
- * `genericText` : définition neutre de la spécialité, écrite pour ce prototype
- *                 (aucune affirmation sur les praticiens ou équipements de la clinique).
- * `status: "documented"` = intitulé présent sur la source ; disponibilité à confirmer.
+ * `text` : description affichée dans le prototype (source ou définition neutre).
+ * `source` : "source" si le texte provient de la page publique, "placeholder" s'il s'agit
+ *            d'une définition neutre écrite pour le prototype et à faire valider.
+ * `status: "documented"` = l'intitulé est présent sur la source ; la disponibilité
+ *                        et le périmètre réel restent à confirmer par la clinique.
  */
 export const specialties = [
   {

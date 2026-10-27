@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, stat, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const html = await readFile("index.html", "utf8");
@@ -97,4 +97,35 @@ for (const match of html.matchAll(/href="(mailto:[^"]+)"/g)) {
 // Le mouvement réduit doit aussi neutraliser les apparitions au défilement.
 assert.match(css, /\.reveal\s*\{\s*opacity:\s*1;\s*transform:\s*none;/, "Les apparitions doivent être neutralisées en mouvement réduit.");
 
+// --- Scan de secrets : aucun fichier .env ni motif de clé/token dans les sources publiées ---
+const secretPatterns = [
+  /\b(API[_-]?KEY|SECRET[_-]?KEY|PRIVATE[_-]?KEY|ACCESS[_-]?TOKEN|AUTH[_-]?TOKEN)\b/i,
+  /\b(ghp_|github_pat_|glpat-|xoxb-|sk_live_|sk_test_)\w+/
+];
+const sourceFiles = ["index.html", "styles.css", "robots.txt", "src/main.js", "src/appointment-demo.mjs", "src/clinic-info.mjs"];
+const secretFindings = [];
+for (const relativePath of sourceFiles) {
+  try {
+    const content = await readFile(resolve(root, relativePath), "utf8");
+    for (const pattern of secretPatterns) {
+      for (const match of content.matchAll(pattern)) {
+        secretFindings.push(relativePath + " : " + match[0].slice(0, 40));
+      }
+    }
+  } catch {
+    // Fichier absent : déjà signalé par les stat() plus haut.
+  }
+}
+assert.equal(secretFindings.length, 0, "Secrets détectés dans les sources :\n  " + secretFindings.join("\n  "));
+
+// Aucun fichier .env ne doit exister à la racine ni dans scripts/.
+const envCandidates = [".env", ".env.local", ".env.production", ".env.development"];
+for (const envFile of envCandidates) {
+  try {
+    await stat(resolve(root, envFile));
+    assert.fail("Fichier de secrets interdit présent : " + envFile);
+  } catch {
+    // Absent : attendu.
+  }
+}
 console.log("Contrôle statique réussi : métadonnées, ancres, formulaire local, sécurité de base, focus, images, FAQ et coordonnées documentées.");

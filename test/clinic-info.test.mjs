@@ -43,6 +43,38 @@ test("la certification ISO 9001 n'est jamais présentée comme acquise", () => {
   const iso = clinicInfo.history.find((item) => item.text.includes("ISO 9001"));
   assert.ok(iso, "La mention ISO 9001 doit figurer dans l'historique documenté.");
   assert.match(iso.text, /certification visée, non acquise/);
+  assert.ok(!/certification acquise|certifiée|délivrée|obtenue|validée/.test(iso.text),
+    "L'ISO 9001 ne doit pas être décrite comme déjà acquise.");
+});
+
+test("chaque contact documenté porte un avertissement de confirmation explicite", () => {
+  const documentedContacts = [clinicInfo.email, clinicInfo.emergency, clinicInfo.address];
+  for (const field of documentedContacts) {
+    if (field.status === "documented") {
+      assert.ok(field.note, `Contact documenté sans note : ${JSON.stringify(field)}`);
+      assert.match(field.note, /confirm|valider/i,
+        `Contact documenté sans avertissement de confirmation : ${JSON.stringify(field)}`);
+    }
+  }
+});
+
+test("aucun champ placeholder ne contient de valeur, de contact ou d'horaire inventé", () => {
+  const placeholders = [
+    clinicInfo.phone, clinicInfo.emailLocal, clinicInfo.addressExact,
+    clinicInfo.hours.reception, clinicInfo.appointment.method, clinicInfo.mapLink,
+  ];
+  for (const field of placeholders) {
+    assert.equal(field.status, "placeholder", "Statut attendu : placeholder");
+    assert.equal(field.value, null, "Un champ placeholder ne doit contenir aucune valeur : " + field.label);
+    assert.ok(field.label && field.label.length > 0, "Libellé placeholder manquant : " + field.label);
+  }
+});
+
+test("aucune spécialité n'est décrite comme disponible ou confirmée par la clinique", () => {
+  for (const specialty of specialties) {
+    assert.ok(!/disponible|offert par la clinique|nos médecins|nos équipements|proposée à la clinique|au sein de la clinique/i.test(specialty.text),
+      "Spécialité présentée comme confirmée : " + specialty.name);
+  }
 });
 
 /* ------------------------------------------------------------------ */
@@ -76,7 +108,9 @@ test("collectPendingConfirmations recense les champs à confirmer", () => {
   assert.ok(placeholders.length >= 5, "Plusieurs champs doivent rester à confirmer.");
   const paths = placeholders.map((item) => item.path);
   assert.ok(paths.some((path) => path.startsWith("phone")));
-  assert.ok(paths.some((path) => path.startsWith("hours")));
+  assert.ok(paths.some((path) => path.startsWith("email")));
+  assert.ok(paths.some((path) => path.startsWith("address")));
+  assert.ok(paths.some((path) => path.startsWith("hours.reception")));
 });
 
 /* ------------------------------------------------------------------ */
@@ -118,6 +152,28 @@ test("toutes les images du HTML existent et sont sous licence documentée", asyn
     const info = await stat(match[1]);
     assert.ok(info.size > 0, "Image vide : " + match[1]);
   }
+});
+
+test("aucune image du prototype n'est présentée comme une photographie authentique de la clinique", async () => {
+  const manifest = JSON.parse(await readFile("assets/img/manifest.json", "utf8"));
+  for (const image of manifest.images) {
+    assert.equal(image.authentic, false, "Image déclarée authentique : " + image.id);
+    assert.ok(image.provider && image.license, "Illustration sans provenance/licence : " + image.id);
+    assert.ok(image.alt && image.alt.length > 0, "Alt texte manquant : " + image.id);
+  }
+});
+
+test("la page affiche le bandeau prototype et les protections anti-indexation", async () => {
+  const html = await readFile("index.html", "utf8");
+  assert.ok(/Prototype indépendant — non officiel/.test(html), "Bandeau « Prototype indépendant — non officiel » manquant.");
+  assert.ok(/noindex/.test(html), "Métadonnée anti-indexation (noindex) manquante.");
+  assert.ok(/prototype/.test(html.toLowerCase()), "Mention prototype absente de la page.");
+});
+
+test("les coordonnées affichées dans le pied de page signalent qu'elles restent à confirmer", async () => {
+  const html = await readFile("index.html", "utf8");
+  assert.ok(/restent à confirmer/.test(html), "Avertissement de confirmation des coordonnées manquant.");
+  assert.ok(/validation-tag/.test(html), "Balises de validation (« à confirmer ») manquantes dans les infos pratiques.");
 });
 
 /* ------------------------------------------------------------------ */

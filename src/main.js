@@ -1,5 +1,11 @@
 import { createDemoAppointment } from "./appointment-demo.mjs";
 
+/* Marque le document comme piloté par JavaScript : les éléments .reveal
+   sont masqués initialement et révélés au défilement. Si ce marquage
+   n'est pas appliqué (échec du chargement JS), le CSS de base garde le
+   contenu visible : pas d'écran blanc. */
+document.documentElement.classList.add("js-ready");
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#navigation-principale");
 const requestForm = document.querySelector("#demo-form");
@@ -222,7 +228,7 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
         if (!entry.isIntersecting) return;
         const element = entry.target;
         const delay = element.getAttribute("data-reveal-delay");
-        if (delay) element.style.setProperty("--reveal-delay", delay + " * 90ms");
+        if (delay) element.style.setProperty("--reveal-delay", "calc(" + delay + " * 90ms)");
         element.classList.add("is-visible");
         observer.unobserve(element);
       });

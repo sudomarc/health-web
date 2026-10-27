@@ -64,7 +64,7 @@ img { display: block; max-width: 100%; height: auto; }
 .prototype-notice strong { font-weight: 750; }
 .notice-dot { width: 6px; height: 6px; flex: 0 0 6px; background: var(--lime); border-radius: 99px; }
 .notice-separator { color: #8faea3; }
-.skip-link { position: absolute; z-index: 100; top: var(--space-1); left: var(--space-1); padding: 10px 16px; color: white; background: var(--green-dark); border-radius: var(--radius-sm); }
+.skip-link { position: absolute; z-index: 100; top: var(--space-1); left: var(--space-1); padding: 10px 16px; color: white; background: var(--green-dark); border-radius: var(--radius-sm); transform: translateY(-100%); }
 .skip-link:focus { transform: translateY(0); }
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(247, 248, 243, .94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(223, 229, 223, .86); }
 .nav-container { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 36px; }
@@ -335,8 +335,11 @@ h3 { font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; margin: 0 0 va
 .lightbox-nav:hover { background: rgba(255,255,255,.2); }
 
 /* --------------------- APPARITION AU DÉFILEMENT --------------------- */
-.reveal { --reveal-delay: 0ms; opacity: 0; transform: translateY(16px); transition: opacity .55s ease var(--reveal-delay), transform .55s ease var(--reveal-delay); }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* Le contenu reste visible même si JavaScript échoue ou est absent : pas d'écran blanc. */
+.reveal { --reveal-delay: 0ms; opacity: 1; transform: none; }
+/* Quand JavaScript est disponible, on masque initialement et on révèle au défilement. */
+.js-ready .reveal { opacity: 0; transform: translateY(16px); transition: opacity .55s ease var(--reveal-delay), transform .55s ease var(--reveal-delay); }
+.js-ready .reveal.is-visible { opacity: 1; transform: none; }
 
 /* --------------------------- RESPONSIVE --------------------------- */
 @media (min-width: 1440px) {

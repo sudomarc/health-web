@@ -1,23 +1,14 @@
 /**
  * Diagnostic : identifie les éléments qui débordent horizontalement.
+ * Dépend du paquet `playwright` installé dans ce dépôt (devDependency).
  * Usage : node scripts/diagnose-overflow.mjs [port]
+ * Prérequis CI : npx playwright install chromium
  */
 import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
-import { mkdir, readdir, stat } from "node:fs/promises";
+import { mkdir, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve, sep } from "node:path";
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-const playwrightPath = resolve(process.cwd(), "..", "nova-web", "node_modules", "playwright-core");
-const { chromium } = require(playwrightPath);
-
-const msPlaywright = join(process.env.LOCALAPPDATA || "", "ms-playwright");
-const chromiumFolder = (await readdir(msPlaywright).catch(() => []))
-  .filter((name) => /^chromium-\d+$/.test(name))
-  .sort()
-  .pop();
-const localChromium = join(msPlaywright, chromiumFolder, "chrome-win64", "chrome.exe");
+import { chromium } from "playwright";
 
 const root = resolve(process.cwd(), "dist");
 const port = Number(process.argv[2] || 4181);
@@ -43,7 +34,7 @@ const server = createServer(async (request, response) => {
 await new Promise((done) => server.listen(port, "127.0.0.1", done));
 const base = "http://127.0.0.1:" + port + "/";
 
-const browser = await chromium.launch({ executablePath: localChromium, headless: true });
+const browser = await chromium.launch({ headless: true });
 for (const width of [320, 768]) {
   const page = await browser.newPage();
   await page.setViewportSize({ width, height: 800 });

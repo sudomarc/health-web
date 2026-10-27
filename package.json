@@ -12,6 +12,10 @@
     "test": "node --test",
     "check": "node scripts/check-site.mjs",
     "build": "npm run check && node scripts/build.mjs",
-    "preview": "node scripts/dev-server.mjs dist 4174"
+    "preview": "node scripts/dev-server.mjs dist 4174",
+    "browser-verify": "node scripts/browser-verify.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
   }
 }

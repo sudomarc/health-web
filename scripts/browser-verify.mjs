@@ -1,31 +1,14 @@
 /**
  * Vérification navigateur réelle du prototype via Playwright (chromium).
- * Dépendance empruntée à ../nova-web/node_modules (aucune installation dans ce dépôt).
+ * Dépend du paquet `playwright` installé dans ce dépôt (devDependency).
  * Usage : node scripts/browser-verify.mjs [port]
+ * Prérequis CI : npx playwright install chromium (ou playwright install --with-deps chromium)
  */
 import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
-import { mkdir, readdir, stat } from "node:fs/promises";
+import { mkdir, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve, sep } from "node:path";
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-const playwrightPath = resolve(process.cwd(), "..", "nova-web", "node_modules", "playwright-core");
-let chromium;
-({ chromium } = require(playwrightPath));
-
-// Le paquet playwright-core n'est pas accompagné de son script d'installation ;
-// on pointe explicitement vers le chromium déjà présent sur la machine.
-const msPlaywright = join(process.env.LOCALAPPDATA || "", "ms-playwright");
-const chromiumFolder = (await readdir(msPlaywright).catch(() => []))
-  .filter((name) => /^chromium-\d+$/.test(name))
-  .sort()
-  .pop();
-if (!chromiumFolder) {
-  console.error("Aucun chromium Playwright trouvé dans " + msPlaywright + " — vérification navigateur impossible.");
-  process.exit(2);
-}
-const localChromium = join(msPlaywright, chromiumFolder, "chrome-win64", "chrome.exe");
+import { chromium } from "playwright";
 
 const root = resolve(process.cwd(), "dist");
 const port = Number(process.argv[2] || 4180);
@@ -72,7 +55,7 @@ const viewports = [
   { name: "1440px", width: 1440, height: 900 }
 ];
 
-const browser = await chromium.launch({ executablePath: localChromium, headless: true });
+const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext();
 const failures = [];
 const report = [];
