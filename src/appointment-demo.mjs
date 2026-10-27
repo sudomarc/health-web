@@ -1,6 +1,7 @@
 export const allowedServices = new Set([
   "cardiologie", "gynecologie", "endocrinologie", "gastro-enterologie",
-  "neurologie", "ophtalmologie", "traumatologie", "urologie"
+  "neurologie", "ophtalmologie", "traumatologie", "urologie",
+  "psychopathologie", "visceralgie", "esthetique"
 ]);
 export const allowedPeriods = new Set(["matin", "apres-midi", "indifferent"]);
 const serviceLabels = {
@@ -11,7 +12,10 @@ const serviceLabels = {
   neurologie: "Neurologie",
   ophtalmologie: "Ophtalmologie",
   traumatologie: "Traumatologie",
-  urologie: "Urologie"
+  urologie: "Urologie",
+  psychopathologie: "Psychopathologie",
+  visceralgie: "Viscéralgie",
+  esthetique: "Esthétique"
 };
 
 function localDateString(date) {

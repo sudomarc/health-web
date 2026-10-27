@@ -1,0 +1,76 @@
+{
+  "$comment": "Manifeste des images du prototype. Les images 'authentic: false' sont des photos d'illustration sous licence libre et NE REPRÉSENTENT PAS la clinique. Remplacer par les photos authentiques fournies par la clinique avant toute publication.",
+  "generated": "2026-10-24",
+  "images": [
+    {
+      "id": "hero-clinician",
+      "file": "assets/img/hero-clinician.jpg",
+      "authentic": false,
+      "alt": "Professionnelle de santé consultant un dossier numérique",
+      "source": "https://unsplash.com/photos/1666214280391-8ff5bd3c0bf0",
+      "provider": "Unsplash",
+      "license": "Unsplash License (usage commercial et non commercial autorisé, sans attribution obligatoire)",
+      "attribution": "Photo d'illustration — Unsplash",
+      "placeholders": "À remplacer par une photographie authentique de la clinique [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "clinic-reception",
+      "file": "assets/img/clinic-reception.jpg",
+      "authentic": false,
+      "alt": "Accueil et espace d'attente d'un établissement de soins",
+      "source": "https://unsplash.com/photos/1629909613654-28e377c37b09",
+      "provider": "Unsplash",
+      "license": "Unsplash License",
+      "attribution": "Photo d'illustration — Unsplash",
+      "placeholders": "À remplacer par la photo du hall d'accueil [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "care-team",
+      "file": "assets/img/care-team.jpg",
+      "authentic": false,
+      "alt": "Équipe soignante réunie dans un couloir d'établissement de santé",
+      "source": "https://unsplash.com/photos/1631217868264-e5b90bb7e133",
+      "provider": "Unsplash",
+      "license": "Unsplash License",
+      "attribution": "Photo d'illustration — Unsplash",
+      "placeholders": "À remplacer par une photo de l'équipe [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "consultation",
+      "file": "assets/img/consultation.jpg",
+      "authentic": false,
+      "alt": "Médecin échangeant avec un patient en consultation",
+      "source": "https://unsplash.com/photos/1579684385127-1ef15d508118",
+      "provider": "Unsplash",
+      "license": "Unsplash License",
+      "attribution": "Photo d'illustration — Unsplash",
+      "placeholders": "Illustration générique — ne pas présenter comme un praticien de la clinique"
+    },
+    {
+      "id": "facility-exterior",
+      "file": "assets/img/facility-exterior.jpg",
+      "authentic": false,
+      "alt": "Façade d'un bâtiment de soins moderne",
+      "source": "https://unsplash.com/photos/1587351021759-3e566b6af7cc",
+      "provider": "Unsplash",
+      "license": "Unsplash License",
+      "attribution": "Photo d'illustration — Unsplash",
+      "placeholders": "À remplacer par la photo de l'extérieur [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "medical-tech",
+      "file": "assets/img/medical-tech.jpg",
+      "authentic": false,
+      "alt": "Équipement médical dans un plateau technique",
+      "source": "https://unsplash.com/photos/1516549655169-df83a0774514",
+      "provider": "Unsplash",
+      "license": "Unsplash License",
+      "attribution": "Photo d'illustration — Unsplash",
+      "placeholders": "À remplacer par une photo du plateau médicotechnique réel"
+    }
+  ],
+  "credits": {
+    "note": "Toutes les images actuelles sont des illustrations sous licence Unsplash. Aucune n'est une photographie de l'International Clinic Conakry.",
+    "downloadScript": "scripts/download-images.ps1"
+  }
+}

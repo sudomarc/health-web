@@ -15,9 +15,20 @@ const publicFiles = [
   "styles.css",
   "robots.txt",
   "src/main.js",
-  "src/appointment-demo.mjs"
+  "src/appointment-demo.mjs",
+  "src/clinic-info.mjs"
 ];
 for (const relativePath of publicFiles) {
+  await stat(resolve(root, relativePath));
+}
+
+// Toute ressource locale référencée (images, scripts, feuilles de style) doit exister.
+// Cela empêche les images cassées ou les liens fantômes d'atteindre la production.
+const referencedAssets = new Set();
+for (const match of html.matchAll(/(?:src|href)="\.\/([^"]+)"/g)) {
+  referencedAssets.add(match[1]);
+}
+for (const relativePath of referencedAssets) {
   await stat(resolve(root, relativePath));
 }
 
@@ -57,4 +68,33 @@ for (const fieldId of ["service", "preferred-date", "period"]) {
 }
 
 assert.match(html, /<meta name="description"/, "La description est manquante.");
-console.log("Contrôle statique réussi : métadonnées, ancres, formulaire local, sécurité de base et focus.");
+
+// --- Contrôles d'accessibilité et d'intégrité des nouvelles sections ---
+
+// Chaque bouton d'accordéon FAQ doit contrôler une région réellement présente.
+for (const match of html.matchAll(/aria-controls="([^"]+)"/g)) {
+  assert.ok(ids.has(match[1]), "aria-controls pointe vers une cible inexistante : #" + match[1]);
+}
+
+// Toute image référencée doit avoir un attribut alt (informatif ou vide si décorative).
+for (const match of html.matchAll(/<img[^>]*>/g)) {
+  assert.ok(/alt="[^"]*"/.test(match[0]), "Image sans attribut alt : " + match[0].slice(0, 80));
+}
+
+// Les liens téléphoniques ne doivent contenir que le numéro documenté sur la source.
+// Cela interdit d'inventer un numéro de téléphone dans une nouvelle section.
+const allowedTelLinks = new Set(["tel:+224627493327"]);
+for (const match of html.matchAll(/href="(tel:[^"]+)"/g)) {
+  assert.ok(allowedTelLinks.has(match[1]), "Lien téléphonique non documenté : " + match[1]);
+}
+
+// Les liens mailto ne doivent contenir que l'adresse relevée sur la source.
+const allowedMailLinks = new Set(["mailto:contact@internationalclinic.ma"]);
+for (const match of html.matchAll(/href="(mailto:[^"]+)"/g)) {
+  assert.ok(allowedMailLinks.has(match[1]), "Lien email non documenté : " + match[1]);
+}
+
+// Le mouvement réduit doit aussi neutraliser les apparitions au défilement.
+assert.match(css, /\.reveal\s*\{\s*opacity:\s*1;\s*transform:\s*none;/, "Les apparitions doivent être neutralisées en mouvement réduit.");
+
+console.log("Contrôle statique réussi : métadonnées, ancres, formulaire local, sécurité de base, focus, images, FAQ et coordonnées documentées.");

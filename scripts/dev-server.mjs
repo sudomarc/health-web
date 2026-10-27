@@ -8,14 +8,19 @@ const port = Number(process.argv[3] || process.env.PORT || 4173);
 const host = "127.0.0.1";
 
 const allowedFiles = new Set([
-  "index.html", "styles.css", "robots.txt", "src/main.js", "src/appointment-demo.mjs"
+  "index.html", "styles.css", "robots.txt",
+  "src/main.js", "src/appointment-demo.mjs", "src/clinic-info.mjs"
 ]);
+// Assets autorisés : uniquement le manifeste et les images JPEG du dossier assets/img.
+const allowedAssetPattern = /^assets\/img\/[a-z0-9-]+\.(jpg|json)$/;
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".mjs": "text/javascript; charset=utf-8",
-  ".txt": "text/plain; charset=utf-8"
+  ".txt": "text/plain; charset=utf-8",
+  ".jpg": "image/jpeg",
+  ".json": "application/json; charset=utf-8"
 };
 
 const server = createServer(async (request, response) => {
@@ -37,7 +42,7 @@ const server = createServer(async (request, response) => {
     response.writeHead(403).end("Forbidden");
     return;
   }
-  if (!allowedFiles.has(relativePath)) {
+  if (!allowedFiles.has(relativePath) && !allowedAssetPattern.test(relativePath)) {
     response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" }).end("Not Found");
     return;
   }
