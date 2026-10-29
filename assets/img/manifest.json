@@ -67,10 +67,82 @@
       "license": "Unsplash License",
       "attribution": "Photo d'illustration — Unsplash",
       "placeholders": "À remplacer par une photo du plateau médicotechnique réel"
+    },
+    {
+      "id": "hero-conakry",
+      "file": "assets/img/hero-conakry.jpg",
+      "authentic": false,
+      "alt": "Bâtiment de la clinique International Clinic à Conakry — image d'illustration du site de référence",
+      "source": "https://internationalclinicconakry.com/assets/builder/uplodedFilesImages/conakry2_1f1b4.jpg",
+      "sourcePage": "https://internationalclinicconakry.com/",
+      "provider": "Site de référence internationalclinicconakry.com",
+      "license": "Non déterminée — droits de réutilisation à confirmer",
+      "status": "autorisation à confirmer",
+      "originalSection": "Accueil — présentation de la clinique (Conakry)",
+      "dimensions": "520 x 473 px",
+      "attribution": "Image du site de référence internationalclinicconakry.com. À remplacer par une photographie officielle fournie par la clinique après confirmation des droits.",
+      "placeholders": "À remplacer par une photographie authentique de la clinique [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "hero-conakry-2",
+      "file": "assets/img/hero-conakry-2.jpg",
+      "authentic": false,
+      "alt": "Façade et entrées de la clinique International Clinic — image d'illustration du site de référence",
+      "source": "https://internationalclinicconakry.com/assets/builder/uplodedFilesImages/conakry1531a.jpg",
+      "sourcePage": "https://internationalclinicconakry.com/",
+      "provider": "Site de référence internationalclinicconakry.com",
+      "license": "Non déterminée — droits de réutilisation à confirmer",
+      "status": "autorisation à confirmer",
+      "originalSection": "Accueil — présentation de la clinique (Conakry)",
+      "dimensions": "655 x 480 px",
+      "attribution": "Image du site de référence internationalclinicconakry.com. À remplacer par une photographie officielle fournie par la clinique après confirmation des droits.",
+      "placeholders": "À remplacer par une photographie authentique de la clinique [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "hero-conakry-3",
+      "file": "assets/img/hero-conakry-3.jpg",
+      "authentic": false,
+      "alt": "Équipe de la clinique International Clinic — image d'illustration du site de référence",
+      "source": "https://internationalclinicconakry.com/assets/builder/uplodedFilesImages/itp-ci-team-34_0bd97.jpg",
+      "sourcePage": "https://internationalclinicconakry.com/",
+      "provider": "Site de référence internationalclinicconakry.com",
+      "license": "Non déterminée — droits de réutilisation à confirmer",
+      "status": "autorisation à confirmer",
+      "originalSection": "Accueil — présentation de la clinique (Conakry)",
+      "dimensions": "1600 x 800 px",
+      "attribution": "Image du site de référence internationalclinicconakry.com. À remplacer par une photographie officielle fournie par la clinique après confirmation des droits.",
+      "placeholders": "À remplacer par une photographie authentique de la clinique [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "hero-conakry-4",
+      "file": "assets/img/hero-conakry-4.jpg",
+      "authentic": false,
+      "alt": "Plateau et espaces de la clinique International Clinic — image d'illustration du site de référence",
+      "source": "https://internationalclinicconakry.com/assets/builder/uplodedFilesImages/image1_053a0.jpg",
+      "sourcePage": "https://internationalclinicconakry.com/",
+      "provider": "Site de référence internationalclinicconakry.com",
+      "license": "Non déterminée — droits de réutilisation à confirmer",
+      "status": "autorisation à confirmer",
+      "originalSection": "Accueil — présentation de la clinique (Conakry)",
+      "dimensions": "1600 x 800 px",
+      "attribution": "Image du site de référence internationalclinicconakry.com. À remplacer par une photographie officielle fournie par la clinique après confirmation des droits.",
+      "placeholders": "À remplacer par une photographie authentique de la clinique [PHOTO AUTHENTIQUE DE LA CLINIQUE À FOURNIR]"
+    },
+    {
+      "id": "hero-clinician-fallback",
+      "file": "assets/img/hero-clinician.jpg",
+      "authentic": false,
+      "alt": "Image de secours du diaporama héros — photographie d'illustration",
+      "source": "https://unsplash.com/photos/1666214280391-8ff5bd3c0bf0",
+      "provider": "Unsplash",
+      "license": "Unsplash License (usage commercial et non commercial autorisé, sans attribution obligatoire)",
+      "attribution": "Photo d'illustration — Unsplash",
+      "role": "fallback",
+      "placeholders": "Image de secours affichée si toutes les images du diaporama héros échouent à se charger"
     }
   ],
   "credits": {
-    "note": "Toutes les images actuelles sont des illustrations sous licence Unsplash. Aucune n'est une photographie de l'International Clinic Conakry.",
+    "note": "Les images du diaporama héros proviennent du site de référence internationalclinicconakry.com ; elles sont publiées en prototype sous réserve de confirmation des droits de réutilisation (status « autorisation à confirmer »). Aucune n'est présentée comme une photographie authentifiée de la clinique. Les autres images restent des illustrations sous licence Unsplash. Aucune n'est une photographie de l'International Clinic Conakry.",
     "downloadScript": "scripts/download-images.ps1"
   }
 }

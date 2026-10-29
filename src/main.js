@@ -237,3 +237,98 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
   );
   revealElements.forEach((element) => observer.observe(element));
 }
+
+/* ------------------------------------------------------------------ */
+/* Diaporama du héros : changement automatique par fondu enchaîné     */
+/* - Une image reste visible environ 2 000 ms.                        */
+/* - La suivante apparaît par fondu enchaîné (opacité, ~700 ms).      */
+/* - Aucun déplacement horizontal ni vertical, aucun zoom.            */
+/* - Une seule minuterie, jamais dupliquée.                           */
+/* - Respecte prefers-reduced-motion (animation désactivée).          */
+/* ------------------------------------------------------------------ */
+(function () {
+  const DISPLAY_MS = 2000;
+  const FADE_MS = 700;
+
+  const media = document.querySelector(".hero-media");
+  if (!media) return;
+  const slides = Array.from(media.querySelectorAll("img.hero-slide"));
+  if (slides.length < 2) return;
+
+  const reduceMotion = typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
+    : { matches: false, addEventListener: function () {} };
+  let currentIndex = 0;
+  let timer = null;
+  let started = false;
+  const failed = new Set();
+
+  /* Précharge toutes les images du diaporama pour éviter les flashs blancs. */
+  slides.forEach((slide) => {
+    const probe = new Image();
+    probe.src = slide.src;
+    probe.onload = function () { slide.classList.add("hero-slide--loaded"); };
+    probe.onerror = function () {
+      failed.add(slide);
+      slide.classList.add("hero-slide--failed");
+    };
+  });
+
+  function show(index) {
+    index = ((index % slides.length) + slides.length) % slides.length;
+    const previous = slides[currentIndex];
+    currentIndex = index;
+    if (previous) previous.classList.remove("is-current");
+    slides[currentIndex].classList.add("is-current");
+  }
+
+  function nextSlide() {
+    let index = currentIndex + 1;
+    for (let attempts = 0; attempts < slides.length; attempts += 1) {
+      const candidate = slides[index % slides.length];
+      if (!failed.has(candidate)) {
+        show(index);
+        return;
+      }
+      index += 1;
+    }
+    /* Toutes les images ont échoué : on affiche l'image de secours. */
+    const fallback = document.createElement("img");
+    fallback.src = "./assets/img/hero-clinician.jpg";
+    fallback.alt = "Image de secours du diaporama héros — photographie d'illustration";
+    fallback.width = 1400;
+    fallback.height = 933;
+    fallback.decoding = "async";
+    fallback.className = "hero-slide is-current";
+    media.appendChild(fallback);
+    slides.push(fallback);
+    show(slides.length - 1);
+  }
+
+  function schedule() {
+    if (timer !== null || reduceMotion.matches) return;
+    timer = setTimeout(function tick() {
+      timer = null;
+      nextSlide();
+      schedule();
+    }, DISPLAY_MS + FADE_MS);
+  }
+
+  function start() {
+    if (started) return;
+    started = true;
+    show(0);
+    if (!reduceMotion.matches) schedule();
+  }
+
+  reduceMotion.addEventListener("change", () => {
+    clearTimeout(timer);
+    timer = null;
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("is-current", index === 0);
+    });
+    if (!reduceMotion.matches) schedule();
+  });
+
+  start();
+})();

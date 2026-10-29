@@ -7,7 +7,7 @@
     <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
     <meta name="theme-color" content="#f6f7f2" />
     <meta name="description" content="Proposition de refonte du site institutionnel d'International Clinic Conakry. Prototype de présentation, non officiel. Les coordonnées et spécialités sont à valider auprès de la clinique." />
-    <title>International Clinic Conakry — proposition de refonte (prototype)</title>
+    <title>International Clinic Conakry - proposition de refonte (prototype)</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23196d61'/%3E%3Cpath d='M28 14h8v14h14v8H36v14h-8V36H14v-8h14z' fill='white'/%3E%3C/svg%3E" />
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./src/main.js"></script>
@@ -39,7 +39,7 @@
           <a href="#clinique">La clinique</a>
           <a href="#parcours">Parcours patient</a>
           <a href="#informations">Infos pratiques</a>
-          <a class="nav-cta" href="#demande">Préparer une demande <span aria-hidden="true">↗</span></a>
+          <a class="nav-cta" href="#demande">Préparer une demande <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         </nav>
       </div>
     </header>
@@ -53,27 +53,30 @@
             <h1 id="hero-title">Les soins spécialisés,<br /><em>avec plus de clarté.</em></h1>
             <p class="hero-intro">International Clinic Conakry est un établissement de soins privé situé à Camayenne, commune de Dixinn. Cette proposition de site réorganise l'information pour que chaque visiteur trouve rapidement ce qu'il cherche.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#specialites">Explorer les spécialités <span aria-hidden="true">↗</span></a>
-              <a class="button button-text" href="#demande">Préparer une demande <span aria-hidden="true">→</span></a>
+              <a class="button button-primary" href="#specialites">Explorer les spécialités <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+              <a class="button button-text" href="#demande">Préparer une demande <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </div>
             <a class="hero-emergency" href="tel:+224627493327">
               <span class="emergency-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2 19 6v5.2c0 4.6-3 7.9-7 9.6-4-1.7-7-5-7-9.6V6l7-2.8Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 8.6v3.2M12 14.4h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-              <span><strong>Urgences : 24 h/24 et 7 j/7</strong><small>+224 627 49 33 27 — numéro relevé sur le site source, à confirmer</small></span>
+              <span><strong>Urgences : 24 h/24 et 7 j/7</strong><small>+224 627 49 33 27 - numéro relevé sur le site source, à confirmer</small></span>
             </a>
           </div>
 
-          <div class="hero-media reveal" data-reveal-delay="1">
-            <img src="./assets/img/hero-clinician.jpg" alt="Professionnelle de santé consultant un dossier numérique — photo d'illustration" width="1400" height="933" fetchpriority="high" decoding="async" />
+          <div class="hero-media reveal" data-reveal-delay="1" aria-label="Diaporama d'illustration de la clinique">
+            <img src="./assets/img/hero-conakry.jpg" alt="Bâtiment de la clinique International Clinic à Conakry - image d'illustration du site de référence" width="520" height="473" fetchpriority="high" decoding="async" class="hero-slide is-current" />
+            <img src="./assets/img/hero-conakry-2.jpg" alt="Façade et entrées de la clinique International Clinic - image d'illustration du site de référence" width="655" height="480" decoding="async" class="hero-slide" />
+            <img src="./assets/img/hero-conakry-3.jpg" alt="Équipe de la clinique International Clinic - image d'illustration du site de référence" width="1600" height="800" decoding="async" class="hero-slide" />
+            <img src="./assets/img/hero-conakry-4.jpg" alt="Plateau et espaces de la clinique International Clinic - image d'illustration du site de référence" width="1600" height="800" decoding="async" class="hero-slide" />
             <div class="hero-media-badge">
               <span class="badge-index">01</span>
               <span><strong>Établissement privé</strong><small>Inauguré en août 2019 · Dixinn, Conakry</small></span>
             </div>
-            <p class="hero-media-credit">Photo d'illustration sous licence Unsplash — à remplacer par une photographie authentique de la clinique.</p>
+            <p class="hero-media-credit">Images d'illustration du site de référence internationalclinicconakry.com - droits de republication à confirmer auprès de la clinique ; à remplacer par ses photographies officielles.</p>
           </div>
         </div>
         <div class="container hero-bottom">
           <span>UNE EXPÉRIENCE PENSÉE D'ABORD POUR LE MOBILE</span>
-          <a href="#services">Faire défiler <span aria-hidden="true">↓</span></a>
+          <a href="#services">Faire défiler <span class="arrow arrow-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         </div>
       </section>
 
@@ -83,32 +86,32 @@
           <a class="quick-card quick-card-emergency" href="tel:+224627493327">
             <span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.2 19 6v5.2c0 4.6-3 7.9-7 9.6-4-1.7-7-5-7-9.6V6l7-2.8Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 8.6v3.2M12 14.4h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
             <span class="quick-text"><strong>Urgences 24 h/24</strong><small>Appeler le +224 627 49 33 27</small></span>
-            <span class="quick-arrow" aria-hidden="true">↗</span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <a class="quick-card" href="#demande">
             <span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 3.5v5M16 3.5v5M4 10h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
             <span class="quick-text"><strong>Préparer une demande</strong><small>Simulation locale, sans envoi</small></span>
-            <span class="quick-arrow" aria-hidden="true">↗</span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <a class="quick-card" href="#specialites">
             <span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4" stroke-opacity=".4"/></svg></span>
             <span class="quick-text"><strong>Les spécialités</strong><small>11 intitulés relevés sur la source</small></span>
-            <span class="quick-arrow" aria-hidden="true">↗</span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <a class="quick-card" href="#informations">
             <span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg></span>
             <span class="quick-text"><strong>Informations pratiques</strong><small>Adresse, horaires, contact</small></span>
-            <span class="quick-arrow" aria-hidden="true">↗</span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <a class="quick-card" href="#clinique">
             <span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 20v-5h4v5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8v3M10.5 9.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
             <span class="quick-text"><strong>Découvrir la clinique</strong><small>Histoire, qualité, installations</small></span>
-            <span class="quick-arrow" aria-hidden="true">↗</span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <a class="quick-card" href="#faq">
             <span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .9-1 1.6v.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
             <span class="quick-text"><strong>Questions fréquentes</strong><small>Les réponses essentielles</small></span>
-            <span class="quick-arrow" aria-hidden="true">↗</span>
+            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </div>
       </section>
@@ -144,67 +147,67 @@
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M4 19h7l4-9 6 17 4-9h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="18" r="15" stroke="currentColor" stroke-opacity=".2"/></svg></span>
               <p class="service-number">01 / SPÉCIALITÉ</p><h3>Cardiologie</h3>
               <p>Le cardiologue est le médecin spécialisé dans l'étude du cœur et des vaisseaux. Il suit certains patients au long cours.</p>
-              <a href="#demande" class="service-link" data-prefill-service="cardiologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="cardiologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="G" data-reveal-delay="1">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="currentColor" stroke-width="1.6"/><path d="M18 10v16M10 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="18" cy="18" r="4" fill="#d8e9b0" stroke="currentColor" stroke-width="1.2"/></svg></span>
               <p class="service-number">02 / SPÉCIALITÉ</p><h3>Gynécologie</h3>
               <p>La gynécologie traite de la physiologie du système génital féminin et de l'ensemble des affections qui le concernent.</p>
-              <a href="#demande" class="service-link" data-prefill-service="gynecologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="gynecologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="E" data-reveal-delay="2">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M18 4.5c-5.4 0-9.5 4.2-9.5 9.5S12.7 23.5 18 23.5 27.5 19.3 27.5 14 23.4 4.5 18 4.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M18 23.5v8M13 28.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18 9v10M13 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               <p class="service-number">03 / SPÉCIALITÉ</p><h3>Endocrinologie</h3>
               <p>L'endocrinologue est le spécialiste des problèmes hormonaux. Il prend en charge les pathologies liées à un dérèglement du système endocrinien.</p>
-              <a href="#demande" class="service-link" data-prefill-service="endocrinologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="endocrinologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="G" data-reveal-delay="3">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="currentColor" stroke-width="1.6"/><path d="M8 18h5l3-5 5 10 3-5h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <p class="service-number">04 / SPÉCIALITÉ</p><h3>Gastro-entérologie</h3>
               <p>Spécialité consacrée à l'appareil digestif et à ses pathologies. Description à faire valider par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="gastro-enterologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="gastro-enterologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="N">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M7 17.5a11 11 0 0 1 22 0c0 7-5.2 11.5-11 14-5.8-2.5-11-7-11-14Z" stroke="currentColor" stroke-width="1.6"/><path d="M13 18h3l2-4 3.5 8 2-4H27" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <p class="service-number">05 / SPÉCIALITÉ</p><h3>Neurologie</h3>
               <p>La neurologie traite des maladies du système nerveux, central et périphérique. Description à faire valider par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="neurologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="neurologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="O" data-reveal-delay="1">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M4 18s5.2-8 14-8 14 8 14 8-5.2 8-14 8S4 18 4 18Z" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="1.5" fill="currentColor"/></svg></span>
               <p class="service-number">06 / SPÉCIALITÉ</p><h3>Ophtalmologie</h3>
               <p>Spécialité de la vision et de l'œil : examen, suivi et prise en charge des affections oculaires. Description à faire valider.</p>
-              <a href="#demande" class="service-link" data-prefill-service="ophtalmologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="ophtalmologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="T" data-reveal-delay="2">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M10 5.5v11a8 8 0 0 0 16 0v-11M7 8.5h6M23 8.5h6M18 24.5v6M13 30.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="18" cy="16.5" r="3" fill="#d8e9b0" stroke="currentColor" stroke-width="1.2"/></svg></span>
               <p class="service-number">07 / SPÉCIALITÉ</p><h3>Traumatologie</h3>
               <p>Spécialité des lésions de l'appareil locomoteur d'origine traumatique. Description à faire valider par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="traumatologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="traumatologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="U" data-reveal-delay="3">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M12 5v7a6 6 0 0 0 12 0V5M9 5h6M21 5h6M18 18v12M12 25h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="18" cy="12" r="2.5" fill="#d8e9b0" stroke="currentColor" stroke-width="1.2"/></svg></span>
               <p class="service-number">08 / SPÉCIALITÉ</p><h3>Urologie</h3>
               <p>L'urologie traite des voies urinaires et de l'appareil génital masculin. Description à faire valider par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="urologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="urologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="P">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="14" stroke="currentColor" stroke-width="1.6"/><path d="M18 10.5c-2.6 0-4.2 1.7-3.6 4 .5 1.9 3.6 3.4 3.6 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18 10.5c2.6 0 4.2 1.7 3.6 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="18" cy="23.5" r="1.6" fill="currentColor"/></svg></span>
               <p class="service-number">09 / SPÉCIALITÉ</p><h3>Psychopathologie</h3>
               <p>Intitulé présent sur la page source. Intitulé, périmètre et disponibilité à confirmer par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="psychopathologie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="psychopathologie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item reveal" data-letter="V" data-reveal-delay="1">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M13 6v9a5 5 0 0 0 10 0V6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 6h5M23 6h5M18 20v6a4 4 0 0 1-4 4h-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="11" cy="30" r="1.8" fill="#d8e9b0" stroke="currentColor" stroke-width="1.2"/></svg></span>
               <p class="service-number">10 / SPÉCIALITÉ</p><h3>Viscéralgie</h3>
               <p>Intitulé présent sur la page source. Intitulé, périmètre et disponibilité à confirmer par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="visceralgie">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="visceralgie">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
             <article class="service-item service-item-last reveal" data-letter="E" data-reveal-delay="2">
               <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M18 6c3.5 4.4 8 7.6 8 12a8 8 0 1 1-16 0c0-4.4 4.5-7.6 8-12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14.5 20.5c.4 2 1.8 3.2 3.5 3.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
               <p class="service-number">11 / SPÉCIALITÉ</p><h3>Esthétique</h3>
               <p>Intitulé présent sur la page source. Intitulé, périmètre et disponibilité à confirmer par la clinique.</p>
-              <a href="#demande" class="service-link" data-prefill-service="esthetique">Choisir ce service <span aria-hidden="true">↗</span></a>
+              <a href="#demande" class="service-link" data-prefill-service="esthetique">Choisir ce service <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             </article>
           </div>
 
@@ -228,8 +231,8 @@
             <p class="clinic-source-note">Textes reformulés à partir de la page publique de référence ; validation éditoriale requise.</p>
           </div>
           <div class="clinic-media reveal" data-reveal-delay="1">
-            <img src="./assets/img/clinic-reception.jpg" alt="Accueil et espace d'attente d'un établissement de soins — photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
-            <p class="media-credit">Illustration sous licence Unsplash — ne présente pas l'intérieur réel de la clinique.</p>
+            <img src="./assets/img/clinic-reception.jpg" alt="Accueil et espace d'attente d'un établissement de soins - photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
+            <p class="media-credit">Illustration sous licence Unsplash - ne présente pas l'intérieur réel de la clinique.</p>
           </div>
         </div>
 
@@ -240,28 +243,28 @@
           </div>
           <div class="gallery-grid">
             <button class="gallery-item" type="button" data-gallery-index="0">
-              <img src="./assets/img/facility-exterior.jpg" alt="Façade d'un bâtiment de soins moderne — photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
-              <span class="gallery-label">Extérieur — illustration</span>
+              <img src="./assets/img/facility-exterior.jpg" alt="Façade d'un bâtiment de soins moderne - photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
+              <span class="gallery-label">Extérieur - illustration</span>
             </button>
             <button class="gallery-item" type="button" data-gallery-index="1">
-              <img src="./assets/img/clinic-reception.jpg" alt="Espace d'accueil d'un établissement de soins — photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
-              <span class="gallery-label">Accueil — illustration</span>
+              <img src="./assets/img/clinic-reception.jpg" alt="Espace d'accueil d'un établissement de soins - photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
+              <span class="gallery-label">Accueil - illustration</span>
             </button>
             <button class="gallery-item" type="button" data-gallery-index="2">
-              <img src="./assets/img/consultation.jpg" alt="Médecin échangeant avec un patient — photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
-              <span class="gallery-label">Consultation — illustration</span>
+              <img src="./assets/img/consultation.jpg" alt="Médecin échangeant avec un patient - photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
+              <span class="gallery-label">Consultation - illustration</span>
             </button>
             <button class="gallery-item" type="button" data-gallery-index="3">
-              <img src="./assets/img/medical-tech.jpg" alt="Équipement médical dans un plateau technique — photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
-              <span class="gallery-label">Plateau technique — illustration</span>
+              <img src="./assets/img/medical-tech.jpg" alt="Équipement médical dans un plateau technique - photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
+              <span class="gallery-label">Plateau technique - illustration</span>
             </button>
             <button class="gallery-item" type="button" data-gallery-index="4">
-              <img src="./assets/img/care-team.jpg" alt="Équipe soignante réunie — photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
-              <span class="gallery-label">Équipe — illustration</span>
+              <img src="./assets/img/care-team.jpg" alt="Équipe soignante réunie - photo d'illustration" width="1200" height="800" loading="lazy" decoding="async" />
+              <span class="gallery-label">Équipe - illustration</span>
             </button>
             <button class="gallery-item" type="button" data-gallery-index="5">
-              <img src="./assets/img/hero-clinician.jpg" alt="Professionnelle de santé avec un dossier numérique — photo d'illustration" width="1400" height="933" loading="lazy" decoding="async" />
-              <span class="gallery-label">Soin — illustration</span>
+              <img src="./assets/img/hero-clinician.jpg" alt="Professionnelle de santé avec un dossier numérique - photo d'illustration" width="1400" height="933" loading="lazy" decoding="async" />
+              <span class="gallery-label">Soin - illustration</span>
             </button>
           </div>
         </div>
@@ -309,7 +312,7 @@
             <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> PARCOURS PATIENT</p>
             <h2 id="path-title">Moins de recherche.<br /><em>Plus de repères.</em></h2>
             <p>Une expérience bien conçue répond aux premières questions avant même le premier contact : où aller, quoi apporter, qui joindre.</p>
-            <a class="button button-light" href="#demande">Voir la simulation <span aria-hidden="true">↗</span></a>
+            <a class="button button-light" href="#demande">Voir la simulation <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
             <div class="path-decor" aria-hidden="true"><span></span><span></span><span></span></div>
           </div>
           <div class="path-steps reveal" data-reveal-delay="1">
@@ -396,7 +399,7 @@
           </div>
 
           <form class="request-form" id="demo-form">
-            <div class="form-topline"><span>01 — VOTRE PRÉFÉRENCE</span><span>Démo uniquement</span></div>
+            <div class="form-topline"><span>01 - VOTRE PRÉFÉRENCE</span><span>Démo uniquement</span></div>
             <div class="field-group">
               <label for="service">Service souhaité <span aria-hidden="true">*</span></label>
               <select id="service" name="service" required>
@@ -429,7 +432,7 @@
                 </select>
               </div>
             </div>
-            <button class="button button-primary form-submit" type="submit">Simuler ma demande <span aria-hidden="true">→</span></button>
+            <button class="button button-primary form-submit" type="submit">Simuler ma demande <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
             <p class="form-legal">Aucune prise de rendez-vous réelle. Aucune demande n'a été envoyée ni enregistrée. Ne saisissez aucune information personnelle ou médicale.</p>
             <div class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
           </form>
@@ -448,11 +451,11 @@
             <article class="practical-item">
               <span class="practical-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg></span>
               <div><h3>Localisation</h3>
-                <p>Camayenne, commune de Dixinn, Conakry, Guinée — indication publique à confirmer.<span class="validation-tag">Adresse exacte à valider</span></p></div>
+                <p>Camayenne, commune de Dixinn, Conakry, Guinée - indication publique à confirmer.<span class="validation-tag">Adresse exacte à valider</span></p></div>
             </article>
             <article class="practical-item">
               <span class="practical-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7.5 3.5h3l1.5 4-2 1.6a15.4 15.4 0 0 0 5 5l1.6-2 4 1.5v3c0 1.1-.9 2-2 2C10 18.6 5.4 14 5.4 5.5c0-1.1.9-2 2.1-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-              <div><h3>Téléphone — urgences</h3>
+              <div><h3>Téléphone - urgences</h3>
                 <p><a class="contact-link" href="tel:+224627493327">+224 627 49 33 27</a>, affiché sur le site source. Numéro à confirmer directement auprès de la clinique avant toute utilisation officielle.<span class="validation-tag">Numéro à confirmer</span></p></div>
             </article>
             <article class="practical-item">
@@ -477,7 +480,7 @@
         <div class="container closing-inner reveal">
           <div><p class="eyebrow eyebrow-light">PROCHAINE ÉTAPE</p><h2>Un site officiel<br /><em>commence par des faits confirmés.</em></h2></div>
           <p>La validation des contenus, des coordonnées et du parcours par l'équipe de la clinique reste le préalable à toute version officielle.</p>
-          <a class="button button-light" href="#accueil">Revenir en haut <span aria-hidden="true">↑</span></a>
+          <a class="button button-light" href="#accueil">Revenir en haut <span class="arrow arrow-up" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="13" height="13"><path d="M12 19v-14M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         </div>
       </section>
     </main>
@@ -502,7 +505,7 @@
           <h3>Nous joindre</h3>
           <a class="footer-contact-link footer-contact-emergency" href="tel:+224627493327">Urgences : +224 627 49 33 27</a>
           <a class="footer-contact-link" href="mailto:contact@internationalclinic.ma">contact@internationalclinic.ma</a>
-          <p>Camayenne, commune de Dixinn, Conakry — adresse exacte à valider</p>
+          <p>Camayenne, commune de Dixinn, Conakry - adresse exacte à valider</p>
           <p class="footer-contact-warning">Ces coordonnées sont relevées sur la source publique et restent à confirmer.</p>
         </div>
       </div>

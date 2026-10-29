@@ -55,7 +55,31 @@ const viewports = [
   { name: "1440px", width: 1440, height: 900 }
 ];
 
-const browser = await chromium.launch({ headless: true });
+const localAppData = process.env.LOCALAPPDATA || resolve(process.env.USERPROFILE, "AppData", "Local");
+const msPlaywrightDir = resolve(localAppData, "ms-playwright");
+const launchOptions = { headless: true };
+try {
+  const revisions = await readdir(msPlaywrightDir);
+  const revision = revisions.find((entry) => entry.startsWith("chromium-"));
+  if (revision) {
+    const shellExe = resolve(msPlaywrightDir, revision, "chrome-headless-shell-win64", "chrome-headless-shell.exe");
+    const fullExe = resolve(msPlaywrightDir, revision, "chrome-win64", "chrome.exe");
+    try {
+      await stat(shellExe);
+      launchOptions.executablePath = shellExe;
+    } catch {
+      try {
+        await stat(fullExe);
+        launchOptions.executablePath = fullExe;
+      } catch {
+        // Playwright utilisera son exécutable par défaut.
+      }
+    }
+  }
+} catch {
+  // Répertoire ms-playwright introuvable : Playwright gérera l'erreur de lancement.
+}
+const browser = await chromium.launch(launchOptions);
 const context = await browser.newContext();
 const failures = [];
 const report = [];
@@ -123,6 +147,22 @@ if (!/1 spécialité affichée/.test(statusText)) failures.push("Filtre : statut
 await page.locator('.filter-chip[data-filter="all"]').click();
 const restored = await page.locator("#service-grid .service-item:visible").count();
 if (restored !== 11) failures.push("Filtre : " + restored + " cartes après réinitialisation au lieu de 11.");
+
+  // 6. Diaporama héros : changement automatique par fondu enchaîné (vérifié sur le viewport bureau)
+  if (viewport.name === "1024px") {
+    const slideCount = await page.locator(".hero-slide").count();
+    if (slideCount < 2) failures.push("Héros : moins de deux images dans le diaporama.");
+    const initial = page.locator(".hero-slide.is-current").first();
+    const initialSrc = await initial.getAttribute("src");
+    const initialOpacity = await initial.evaluate((element) => parseFloat(getComputedStyle(element).opacity || "0"));
+    if (initialOpacity !== 1) failures.push("Héros : la première image doit être visible (opacité 1).");
+    await page.waitForTimeout(3000);
+    const current = page.locator(".hero-slide.is-current").first();
+    const currentSrc = await current.getAttribute("src");
+    const currentOpacity = await current.evaluate((element) => parseFloat(getComputedStyle(element).opacity || "0"));
+    if (currentSrc === initialSrc) failures.push("Héros : le diaporama ne change pas d'image automatiquement.");
+    if (currentOpacity < 0.5) failures.push("Héros : l'image affichée après la transition doit rester visible.");
+  }
 
 // 3. Visionneuse d'images
 await page.locator(".gallery-item").first().click();

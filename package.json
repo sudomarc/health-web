@@ -11,7 +11,8 @@
     "dev": "node scripts/dev-server.mjs . 4173",
     "test": "node --test",
     "check": "node scripts/check-site.mjs",
-    "build": "npm run check && node scripts/build.mjs",
+    "check:oxfords": "node skills/oxfords/scripts/check.mjs index.html styles.css src/main.js",
+    "build": "npm run check && npm run check:oxfords && node scripts/build.mjs",
     "preview": "node scripts/dev-server.mjs dist 4174",
     "browser-verify": "node scripts/browser-verify.mjs"
   },
